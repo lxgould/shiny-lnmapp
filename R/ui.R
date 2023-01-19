@@ -5,8 +5,8 @@
 # http://shiny.rstudio.com
 #
 
-library(shiny)
-library(lubridate)
+# library(shiny)
+# library(lubridate)
 headerPanel_2 <- function(title, h, windowTitle=title) {    
   tagList(
     tags$head(tags$title(windowTitle)),
@@ -15,7 +15,7 @@ headerPanel_2 <- function(title, h, windowTitle=title) {
 }
 
 
-shinyUI(fluidPage(
+ui <- shinyUI(fluidPage(
   #theme = "bootstrap.css",
   headerPanel_2(
     HTML(

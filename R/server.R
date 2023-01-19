@@ -6,7 +6,7 @@
 #
 
 #setwd('/srv/shiny-server/apps/prod/lnmApp')
-library(shiny)
+# library(shiny)
 source('/srv/shiny-server/functions/ipak.R')
 library(pacman)
 packages <- c('dplyr','scales','tidyr','ggplot2','readr','lubridate','sendmailR')
@@ -29,7 +29,7 @@ fourYears = rev(seq(from = year(today()), by = -1, length = 4))
 yearCol = colorList[1:4]
 names(yearCol) = fourYears
 
-shinyServer(function(input, output) {
+server <- shinyServer(function(input, output) {
   stud1 <- read_csv('studAll.csv',col_types=c('ccddddddd'))
   tx1 <- read_csv('txAll1.csv',col_types=c('ccdddddddd'),na = '')
   nc1 <- read_csv('nc.csv',col_types=c('ccddddddd'),na = '')

@@ -9,8 +9,6 @@
 library(shiny)
 library(lubridate)
 library(dplyr)
-library(stringr)
-library(DT)
 library(reactable)
 library(data.table)
 
@@ -19,6 +17,3 @@ list.files("R/modules") %>%
     purrr::map(~ source(paste0("R/modules/", .)))
 list.files("R/functions") %>% 
     purrr::map(~ source(paste0("R/functions/", .)))
-
-errorFile = NA  #'data/errorTest.RData'
-traitFile = NA  #'data/traitsTest.RData'
