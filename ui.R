@@ -66,11 +66,8 @@ shinyUI(fluidPage(
               ),
               
             plotOutput('plot',height = 600),
+            uiOutput("dateSelector"),
             
-            sliderInput('dateSelect',label = h3("Year Range:"),
-                           min=2018, max=year(today()),value = c(2018,year(today())),sep="",ticks=FALSE
-                           
-            ),
             radioButtons("pType", label = h3("Plot"),
                          choices = list("Line" = 1, "Bar" = 2), 
                          selected = 1)

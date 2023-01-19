@@ -57,6 +57,18 @@ shinyServer(function(input, output) {
     file.copy(input$file1$datapath,input$file1$name,overwrite=TRUE)
     sendmail(from,to,subject,msg)
   })
+  
+  output$dateSelector <- renderUI({
+    sliderInput('dateSelect',
+                label = h3("Year Range:"),
+                min=min(fourYears), 
+                max=max(fourYears),
+                value = c(min(fourYears), max(fourYears)),sep="",
+                ticks=FALSE
+    )
+    
+  })
+  
   output$ui1 <- renderUI({
     
     if (is.null(input$region))
@@ -104,6 +116,9 @@ shinyServer(function(input, output) {
   })
   
   dataReactive <- reactive({
+    req(input$dateSelect[1])
+    req(input$dateSelect[2])
+    
     if(input$region=='Studs'){
       dat <- stud %>% 
         filter(site %in% input$site,
@@ -126,13 +141,11 @@ shinyServer(function(input, output) {
                year <=(input$dateSelect[2])) 
     }
     
-    
-    
-    
     dat1 <- dat %>%
       mutate(DateMax=as.character(max(date)))
     dat1
   })
+  
   output$update <- renderText({
     maxDate <-  unique(dataReactive()$DateMax)
     maxDate
