@@ -15,7 +15,7 @@ ME_START=`date +"%Y%m%d_%T"`
 CONFIG_DIR=
 BIN_DIR=/usr/local/bin
 INSTALLED_FROM=$CWD
-INSTALL_TO=/srv/shiny-server/apps/prod/lnmapp
+INSTALL_TO=/srv/shiny-server/apps/prod/lnmApp
 REPO="shiny-lnmapp"
 APP=${INSTALLED_FROM}/app.R
 R_DIR=${INSTALLED_FROM}/R
@@ -77,9 +77,10 @@ for F in $REQ_FILES ; do
     cp $F "${INSTALL_TO}/"
 done
 
-printf "%-20s: %s\n" 'Changing Group Ownership' "$INSTALL_DIR"
-chgrp -R shiny "${INSTALL_TO}"
+# printf "%-20s: %s\n" 'Changing Group Ownership' "$INSTALL_DIR"
+# chgrp -R shiny "${INSTALL_TO}"
 # chown -R shiny.shiny "${INSTALL_TO}"
+
 
 #- Display files in the app directory so we can see if everything looks ok
 printf "\nFolder Listing of %s\n" "$INSTALL_TO"
